@@ -1,7 +1,8 @@
-package com.yunuscagliyan.weatherapp
+package com.yunuscagliyan.weatherapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yunuscagliyan.weatherapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
