@@ -52,7 +52,7 @@ class WeatherDayAdapter():RecyclerView.Adapter<WeatherDayAdapter.WeatherDayViewH
                         .into(ivIcon)
                 }
                 tvMax.text="${daily.temp?.max?:0}°"
-                tvMin.text="${daily.temp?.max?:0}°"
+                tvMin.text="${daily.temp?.min?:0}°"
             }
         }
         fun convertLongToTime(time: Long): String {
