@@ -6,6 +6,7 @@ import com.yunuscagliyan.weatherapp.data.remote.model.WeatherResponse
 import com.yunuscagliyan.weatherapp.domain.navigation.NavigationParam
 import com.yunuscagliyan.weatherapp.domain.use_case.one_call.GetOneCallUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -40,7 +41,7 @@ class DetailViewModel @Inject constructor(
         get() = _weatherResource
 
 
-    private fun getOneCall() = viewModelScope.launch {
+    private fun getOneCall() = viewModelScope.launch(Dispatchers.IO) {
         getOneCallUseCase(
             lat = lat,
             lon = lon,
@@ -49,7 +50,7 @@ class DetailViewModel @Inject constructor(
             units = "metric",
             lang = "tr"
         ).onEach {
-            _weatherResource.value = it
+            _weatherResource.postValue(it)
         }.launchIn(viewModelScope)
     }
 

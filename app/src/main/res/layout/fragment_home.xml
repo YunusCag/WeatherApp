@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/tvLocation"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
 
-</FrameLayout>
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:gravity="center"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/hint_text"
+            android:background="@android:color/white"
+            app:boxStrokeColor="@color/borderColor"
+            android:textColorHint="@color/hintTextColor"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:boxCornerRadiusTopStart="0dp"
+            app:boxCornerRadiusTopEnd="0dp"
+            app:boxCornerRadiusBottomEnd="0dp"
+            app:boxCornerRadiusBottomStart="0dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApiKey"
+                android:inputType="text"
+                android:gravity="center"
+                android:textColor="@color/hintTextColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hintTextColor"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEnter"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="@string/btn_enter_text"
+            android:textColor="@color/white"
+            android:background="@drawable/ripple_rounded"
+            app:backgroundTint="@color/btnEnterColor"
+            android:elevation="0dp"
+            app:cornerRadius="8dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

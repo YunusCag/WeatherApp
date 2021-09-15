@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/destination_detail"
         android:name="com.yunuscagliyan.weatherapp.presentation.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="@string/detail_title_text"
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="lat"

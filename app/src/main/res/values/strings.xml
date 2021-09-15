@@ -2,4 +2,7 @@
     <string name="app_name">WeatherApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_enter_text">Enter</string>
+    <string name="hint_text">API KEY</string>
+    <string name="detail_title_text">Weather App</string>
 </resources>

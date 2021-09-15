@@ -8,14 +8,10 @@ data class WeatherResponse(
     val current: Current?,
     @SerializedName("daily")
     val daily: List<Daily>?,
-    @SerializedName("hourly")
-    val hourly: List<Any>?,
     @SerializedName("lat")
     val lat: Double?,
     @SerializedName("lon")
     val lon: Double?,
-    @SerializedName("minutely")
-    val minutely: List<Any>?,
     @SerializedName("timezone")
     val timezone: String?,
     @SerializedName("timezone_offset")

@@ -17,4 +17,20 @@
 
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="btnEnterStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundColor">@color/btnEnterColor</item>
+        <item name="elevation">0dp</item>
+        <item name="shapeAppearance">@style/btnEnterStyle.shape</item>
+        <item name="textAppearanceButton">@style/btnEnterTextStyle</item>
+    </style>
+    <style name="btnEnterTextStyle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="btnEnterStyle.shape" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

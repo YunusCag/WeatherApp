@@ -20,7 +20,7 @@ class GetOneCallUseCase @Inject constructor(
         lang: String,
         apiKey: String,
     ): Flow<Resource<WeatherResponse>> = flow{
-        emit(Resource.Loading<WeatherResponse>(null))
+        emit(Resource.Loading<WeatherResponse>())
         try{
             val response=repository.getOneCall(lat, lon, exclude, units, lang, apiKey)
             emit(Resource.Success(response))

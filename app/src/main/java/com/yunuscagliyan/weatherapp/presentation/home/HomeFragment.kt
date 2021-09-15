@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.permissionx.guolindev.PermissionX
+import com.yunuscagliyan.weatherapp.R
 import com.yunuscagliyan.weatherapp.databinding.FragmentHomeBinding
-import com.yunuscagliyan.weatherapp.presentation.HomeViewModel
+import com.yunuscagliyan.weatherapp.presentation.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -23,7 +25,7 @@ class HomeFragment : Fragment() {
     private var binding: FragmentHomeBinding? = null
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
+    private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,22 +36,29 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController=Navigation.findNavController(view)
+
         initUI()
         checkPermissionGranted()
+        getUserCurrentLocation()
     }
 
     private fun initUI() {
-        viewModel.latitude.observe(viewLifecycleOwner) {
-            binding?.apply {
-                tvLocation.text = "latitude:${it}"
+        binding?.apply {
+            btnEnter.setOnClickListener {
+                viewModel.apiKey.value=etApiKey.text.toString()
+                if(viewModel.validate()){
+                    val action=HomeFragmentDirections.actionDestinationHomeToDestinationDetail(
+                        viewModel.latitude.value,
+                        viewModel.longitude.value,
+                        viewModel.apiKey.value
+                    )
+                    navController.navigate(action)
+                }
+
             }
         }
-        viewModel.longitude.observe(viewLifecycleOwner) {
-            binding?.apply {
-                val text = tvLocation.text.toString()
-                tvLocation.text = text + "\n longitude:${it}"
-            }
-        }
+
 
     }
 
@@ -76,7 +85,9 @@ class HomeFragment : Fragment() {
                 )
             }
             .request { allGranted, grantedList, deniedList ->
-                getUserCurrentLocation()
+                if(allGranted){
+                    getUserCurrentLocation()
+                }
             }
     }
 
