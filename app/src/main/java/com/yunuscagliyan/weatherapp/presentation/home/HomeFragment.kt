@@ -54,6 +54,8 @@ class HomeFragment : Fragment() {
                         viewModel.apiKey.value
                     )
                     navController.navigate(action)
+                }else{
+                    checkPermissionGranted()
                 }
 
             }
@@ -71,17 +73,17 @@ class HomeFragment : Fragment() {
             .onExplainRequestReason { scope, deniedList ->
                 scope.showRequestReasonDialog(
                     deniedList,
-                    "Core fundamental are based on these permissions",
-                    "OK",
-                    "Cancel"
+                    getString(R.string.permission_request_reason_text),
+                    getString(R.string.btn_okay_text),
+                    getString(R.string.btn_cancel_text)
                 )
             }
             .onForwardToSettings { scope, deniedList ->
                 scope.showForwardToSettingsDialog(
                     deniedList,
-                    "You need to allow necessary permissions in Settings manually",
-                    "OK",
-                    "Cancel"
+                    getString(R.string.permission_setting_text),
+                    getString(R.string.btn_okay_text),
+                    getString(R.string.btn_cancel_text)
                 )
             }
             .request { allGranted, grantedList, deniedList ->

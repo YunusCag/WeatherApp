@@ -5,4 +5,10 @@
     <string name="btn_enter_text">Enter</string>
     <string name="hint_text">API KEY</string>
     <string name="detail_title_text">Weather App</string>
+    <string name="permission_setting_text">You need to allow necessary permissions in Settings manually</string>
+    <string name="permission_request_reason_text">Core fundamental are based on these permissions</string>
+    <string name="btn_okay_text">OK</string>
+    <string name="btn_cancel_text">Cancel</string>
+    <string name="un_expected_error_text">An unexpected error occured</string>
+    <string name="no_internet_connection_text">Couldn\'t reach server. Check your internet connection.</string>
 </resources>
