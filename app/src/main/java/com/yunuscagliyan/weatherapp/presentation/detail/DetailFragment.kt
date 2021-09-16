@@ -47,9 +47,13 @@ class DetailFragment : Fragment() {
             when (resource) {
                 is Resource.Loading -> {
                     binding?.progressCircular?.visibility = View.VISIBLE
+                    binding?.progressCircular?.animate()
+                    binding?.tvError?.visibility=View.GONE
+
                 }
                 is Resource.Success -> {
                     binding?.progressCircular?.visibility = View.GONE
+                    binding?.tvError?.visibility=View.GONE
                     bindCurrent(resource.data)
                     val result=resource.data
                     result?.daily?.let {
@@ -59,7 +63,8 @@ class DetailFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     binding?.progressCircular?.visibility = View.GONE
-                    
+                    binding?.tvError?.visibility=View.VISIBLE
+                    binding?.tvError?.text=resource.message?:""
 
                 }
                 else -> Unit

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/hello_blank_fragment"
-        android:background="@color/purple_500"
+        android:background="@color/btnEnterColor"
         android:textColor="@color/white"
         app:titleTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,12 +20,28 @@
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress_circular"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
         android:indeterminateTint="@color/purple_500"
         android:visibility="gone"
-        android:progress="80"
         tools:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Error Text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/textColor"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,10 +91,10 @@
             android:id="@+id/rvDaily"
             tools:listitem="@layout/item_day_weather"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
-            android:layout_marginHorizontal="16dp"/>
+            android:layout_marginHorizontal="20dp"/>
 
     </LinearLayout>
 
