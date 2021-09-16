@@ -59,7 +59,7 @@ class DetailFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     binding?.progressCircular?.visibility = View.GONE
-
+                    
 
                 }
                 else -> Unit

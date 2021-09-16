@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.yunuscagliyan.weatherapp.data.remote.model.Daily
 import com.yunuscagliyan.weatherapp.data.remote.url.WeatherUrl
 import com.yunuscagliyan.weatherapp.databinding.ItemDayWeatherBinding
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,8 +52,11 @@ class WeatherDayAdapter():RecyclerView.Adapter<WeatherDayAdapter.WeatherDayViewH
                         .centerCrop()
                         .into(ivIcon)
                 }
-                tvMax.text="${daily.temp?.max?:0}°"
-                tvMin.text="${daily.temp?.min?:0}°"
+                val numberFormat=DecimalFormat("00.00")
+                val max=daily.temp?.max?:0
+                val min=daily.temp?.min?:0
+                tvMax.text="${numberFormat.format(max)}°"
+                tvMin.text="${numberFormat.format(min)}°"
             }
         }
         fun convertLongToTime(time: Long): String {
